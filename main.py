@@ -12,6 +12,7 @@ def decorator(func):
         global COUNT
         COUNT += 1
         func(self)
+        print(f"Counter value is now: {COUNT}\n")
     return count
 
 
@@ -62,7 +63,7 @@ class ToolBox:
 
     @decorator
     def print_tmpl(self):
-        temp = Template("#$tag: Name: $name, count: $count\n")
+        temp = Template("#$tag: Name: $name, count: $count")
         print(temp.substitute(tag=self.tools[3].tag, name=self.tools[3].name, count=self.tools[3].count))
 
 
@@ -84,7 +85,7 @@ if __name__ == '__main__':
         except TypeError as ex:
             print(ex.args[0])
 
-    print(f"\nCounter value is now: {COUNT}\n")
+    print()
     print(my_box)
     second_box = copy(my_box)
     print(second_box)
